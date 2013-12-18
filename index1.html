@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps User Location</title>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    
+    <script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
+    
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <link rel="stylesheet" href="css/index.css" />
+    <style>
+    html, body, #map_canvas{width:100%;height:94%;}
+    #map_canvas
+    {
+    resize:both;
+overflow:auto;
+}
+    </style>
+    <script src="js/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+var latitude=document.getElementById('lat').value;
+var longitude=document.getElementById('lon').value;
+  $("#hide").click(function(){
+    $("#div1").hide(400 );
+  });
+  $(".tag").click(function(){
+  $("#options").hide(400);
+  $("#div1").slideToggle(400);
+  $("#div1").animate({height:'70%'});
+  $("#map_canvas").animate({height:'28%'});
+   
+  });
+   $(".list").click(function(){
+    $("#div1").hide(400);
+  });
+  $("#back").click(function(){
+    $("#div1").hide(400);
+   $("#map_canvas").animate({height:'95%'});
+    $("#options").slideToggle(400);
+  });
+  $("#div2").click(function(){
+    $("#map_canvas").animate({height:'92%'})
+})
+$("#click1").click(function(){
+    $("#div1").animate({height:'68%'});
+  });
+    $("#getlist").click(function(){
+    $("ul").empty();
+     for (i=0; i< localStorage.length; i++){
+     var keyName = localStorage.key(i);
+     var value = localStorage.getItem(keyName);
+    
+     var temp=new Array();
+     temp=value.split('#');
+     var res=temp[1].concat(temp[3],temp[4],temp[5],temp[6],temp[7],temp[8]);
+     $("<li>",{ html:'<div id="descr">'+temp[2]+'</div><div id="add">'+res+'</div>' })
+        .appendTo("#finallist"); 
+        
+		$('ul li').css({
+			'backgroundImage': 'url(' + temp[9] +')'});
+     
+    }
+    $("#listitems").slideToggle(400);
+    $("#map_canvas").hide(400);
+    $("#options").hide(400);
+  });
+  $("#back1").click(function(){
+  
+    $("#listitems").hide(400);
+    $("#map_canvas").slideToggle(400);
+    $("#options").slideToggle(400);
+  });
+  $("#click2").click(function(){
+    $("#showlist").animate({height:'92%'});
+  });
+  
+  
+  
+  
+  
+</script>
+
+
+
+
+<script language="javascript"> 
+function toggle() {
+    var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/car.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/car.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+     
+       
+} 
+function toggle1() {
+    
+	var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/house.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/house.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+} 
+function toggle2() {
+    
+	var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/supermarket.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/supermarket.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+} 
+function toggle3() {
+    
+	var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/atm-2.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/atm-2.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+} 
+function toggle4() {
+    
+	var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/house.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/house.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+} 
+function toggle5() {
+    
+	var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/bar.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/bar.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+} 
+ function toggle6() {
+    
+	var str1="key";
+    var str2=localStorage.length;
+    var key=str1.concat(str2);
+    var val1="<img src='images/bus.png'>#  #";
+    var val2=document.getElementById('desc').value;
+    var val3="# Latitude: #";
+    var val4=document.getElementById('lat').value;
+    var val5="#, Longitude: #";
+    var val6=document.getElementById('lon').value;
+    var val7="#, Taged Time: #";
+    var currentdate = new Date();
+    var val8 =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    var val9="#images/bus.png"; 
+   
+    
+    var value=val1.concat(val2,val3,val4,val5,val6,val7,val8,val9);
+	localStorage.setItem(key,value); 
+    window.location.href = "index.html";
+} 
+ function clearStorage(){
+        localStorage.clear();
+        window.location.href = "index.html";
+        
+    }
+</script>
+
+    
+   
+  <script>
+   
+           
+    var keyName ;
+    var image;
+    var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+    function locate(){
+        navigator.geolocation.getCurrentPosition(initialize,fail);
+    }
+
+    function initialize(position) {
+     var userMarker;
+     var myLatLng;
+     var myLatLng1;
+      var geocoder = new google.maps.Geocoder();
+    
+        myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        document.getElementById('lat').value=position.coords.latitude;
+        document.getElementById('lon').value=position.coords.longitude;
+        var a="12.9667";
+        var b="77.5667";
+        myLatLng1 = new google.maps.LatLng(a, b);
+        var mapOptions = {
+          zoom: 10,
+          center: myLatLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+                                      mapOptions);
+         for (i=0; i< localStorage.length; i++){
+         keyName = localStorage.key(i);
+         var value = localStorage.getItem(keyName);
+         var temp1=new Array();
+         temp1=value.split('#');
+         var image1=temp1[9];
+         userMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon:image1,
+            title: 'current location'
+            
+        });
+         var infowindow = new google.maps.InfoWindow({
+  content: temp1[2],
+  });
+  infowindow.open(map,userMarker);
+  
+        }
+        userMarker = new google.maps.Marker({
+            position: myLatLng1,
+            map: map,
+            icon:im,
+            title: 'current location'
+            
+        });
+        var infowindow = new google.maps.InfoWindow({
+  content: "Info",
+  });
+
+infowindow.open(map,userMarker);
+      }
+
+     function fail(){
+         alert('navigator.geolocation failed, may not be supported');
+     }
+      </script>
+      
+      <script>
+      function codeLatLng() {
+  var lat = document.getElementById('lat').value;
+  var lon = document.getElementById('lat').value;
+  
+  var lat = parseFloat(lat);
+  var lng = parseFloat(lon);
+  var latlng = new google.maps.LatLng(12.9667, 77.5667);
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+    var add  = results[1].formatted_address;
+    document.getElementById('pos').value=add;
+    alert(add);
+      
+    } else {
+      alert('Geocoder failed due to: ' + status);
+    }
+  });
+}
+
+</script>
+
+
+     </head>
+   
+  <body onload="locate()">
+ 
+    <div id="map_canvas"></div>
+   
+    <div class="buttons1" id="options">
+   <!-- <div id="div2"><b>...</b></div>-->
+			<a class="tag" href="#"><img src="images/tag.png" title="Tag the location" /></a>
+			<a class="list" id="getlist" href="#"><img src="images/list.png" title="Find the taged locations" /></a>
+			<a class="setting" href="javascript:codeLatLng();"><img src="images/setting.png" title="Setting" /></a>
+			<input type="hidden" id="lat"><input type="hidden" id="lon"><input type="text" id="pos">
+			<!--<a class="rss" href=""><img src="images/rss.png" /></a>-->
+			
+		</div>
+		
+		<div id="div1" style="display: none">  
+		<div class="tagpage">
+		
+		<br>
+  <h1>Tag</h1>
+		
+		<h2>Describe About Location</h2>
+		<input type="text" id="desc" maxlength="60"/>
+		<h2>Choose an Image to Tag </h2>
+		<div id="icontag">
+  <table align="center">
+   <tr><td> <div class="buttons">
+			<a class="list" href="javascript:toggle();"><img src="images/car.png" title="Tag the location" /></a>
+			<a class="list" href="javascript:toggle1();"><img src="images/house.png" title="Find the taged locations" /></a>
+			<a class="tag" href="javascript:toggle2();"><img src="images/supermarket.png" title="Setting" /></a>
+			<a class="tag" href="javascript:toggle3();"><img src="images/atm-2.png" /></a>
+			<a class="tag" href="javascript:toggle4();"><img src="images/bank.png" /></a>
+			<a class="tag" href="javascript:toggle5();"><img src="images/bar.png" /></a>
+			<a class="tag" href="javascript:toggle6();"><img src="images/bus.png" /></a>
+			<a class="tag" href="javascript:toggle7();"><img src="images/highway.png" /></a>
+			
+			<a class="tag" href="javascript:toggle8();"><img src="images/busstop.png" /></a>
+			<a class="tag" href="javascript:toggle9();"><img src="images/busstop.png" /></a>
+			<a class="tag" href="javascript:toggle10();"><img src="images/busstop.png" /></a>
+			<a class="tag" href="javascript:toggle11();"><img src="images/busstop.png" /></a>
+			
+		</div></td></tr></table></div>
+		</div>
+		
+		<!--<div id="click1"><b>...</b></div>-->
+		<div class="buttons1" id="option2">
+			<a class="list" href="#" id="back"><img src="images/back2.png" title="Go Back" /></a>
+			<a class="list" href="javascript:clearStorage();"><img src="images/clear1.png" title="Clear" /></a>
+			
+		<!--<button onclick="clearStorage();">clear</button>-->
+		</div>
+		</div>
+		
+		
+		<div id="listitems" style="display: none"> 
+		
+		<div id="showlist">
+		<br>
+		
+		
+		<h1>My Tags</h1>
+		<div id="taglist">
+		<ul align="left" id="finallist">
+          
+        </ul></div>
+        </div>
+       <!-- <div id="click2"><b>...</b></div>-->
+<div class="buttons1" id="option2">
+			<a class="list" href="#" id="back1"><img src="images/back2.png" title="Go Back" /></a>
+			<a class="list" href="javascript:clearStorage();"><img src="images/clear1.png" title="Clear" /></a>
+			
+		<!--<button onclick="clearStorage();">clear</button>-->
+		</div>		
+		
+		
+   </div>
+   <img class="source-image" src="images/back2.png" alt="" />
+  </body>
+  
+</html>
